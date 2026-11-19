@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "projectId": "f26-146488542-01",
+  "ownerId": 146488542,
+  "cohort": "f26",
+  "slot": "01",
+  "title": "Buddy Blackjack: a play-money table for friends",
+  "summary": "A browser blackjack table where friends join by room code, bet fake chips against a dealer, and get graded on every play against basic strategy.",
+  "category": "Everyday tools",
+  "tags": [
+    "Multiplayer",
+    "Games",
+    "Basic strategy"
+  ],
+  "tools": [
+    "TypeScript",
+    "React"
+  ],
+  "cover": {
+    "src": "cover.webp",
+    "alt": "A blackjack table with a cartoon dealer showing a six. Dana holds a pair of eights with a $125 bet, Sam holds sixteen, and the Hit, Stand, Double down and Split buttons are lit."
+  },
+  "screenshots": [
+    {
+      "src": "payout.webp",
+      "alt": "End of a round: the dealer busts with 24, Sam busts with 25, Dana wins $250 on a $125 bet, and a Next round button appears. The players and room code are sample data."
+    },
+    {
+      "src": "scoreboard.webp",
+      "alt": "The Scoreboard panel open over the table, listing each player's chip balance and net profit or loss. The players and room code are sample data."
+    },
+    {
+      "src": "lobby.webp",
+      "alt": "The Blackjack Club lobby: a display name field, starting chips of $500, $1,000 or $5,000, a Create room button, and a box to join with a five-letter code."
+    }
+  ],
+  "story": {
+    "problem": "I wanted a way to play blackjack with friends without anyone risking real money, and without signing up for anything. Most online blackjack is either single-player or tied to real-money gambling, and most casual card sites want accounts. I also wanted the game to teach something, since it is easy to play blackjack for years without knowing which plays are actually correct.",
+    "built": "Buddy Blackjack is a shared table. You type a display name, create a room (choosing a $500, $1,000 or $5,000 bankroll) and send friends the five-letter code or invite link. Up to six players sit at one table against a cartoon dealer. Everyone bets with chips, the round starts when all seated players are ready, and players act in seat order with a 30-second turn timer. Hit, stand, double down and split work, the dealer peeks for blackjack under an ace or ten, and payouts follow the usual rules, with blackjack paying 3 to 2. Play uses a six-deck shoe that is reshuffled when it runs low. A player who runs out of chips can rebuy, and a scoreboard shows balances and profit or loss. Cards are dealt and flipped with animation and sound, with a mute button. A Book panel grades each decision against basic strategy for this table's rules and shows an overall grade and the mistakes you made.",
+    "aiUse": "The app was built with AI throughout. I started in Lovable, an AI app builder, with a written spec of the rules and features, and it produced the first working version: rooms, betting, dealing and realtime sync. I then kept developing it in the repository with Claude Code, Anthropic's coding agent, which wrote most of the later features: the animated dealer and seated table, dealer peeking, split hands, sounds, and the basic strategy grader. The AI is not part of the game itself. The dealer and shoe are ordinary code, and the strategy chart is a fixed table, not a model.",
+    "humanDecisions": "I chose the house rules and wrote them into the strategy code so the grader and the game agree: six decks, the dealer stands on every 17, insurance is not offered, doubling is allowed on any first two cards, doubling after a split is allowed, and any two ten-value cards may be split. The grader only marks a double or split as a mistake when that move was actually allowed on that hand. I kept the game free of accounts, so a browser's random key is your identity. The shoe and the hole card live in a table that browsers cannot read, so players cannot peek at them. All game moves go through the server, not the browser.",
+    "limitations": "This is a friends-and-class project, not a casino. There are no accounts, so clearing your browser data means you lose your seat and your lifetime grade. Seats are first come, first served, and anyone with the room code can sit down. The turn timer is enforced by the host's browser, so if the host closes the tab mid-hand, a stalled turn may not auto-stand. I have no automated tests; I checked the rules and the strategy grader by playing and reading the code. Chips are play money only and there is no real gambling."
+  },
+  "links": {
+    "demo": "https://buddyblackjack.lovable.app/",
+    "video": null,
+    "source": null
+  }
+}
